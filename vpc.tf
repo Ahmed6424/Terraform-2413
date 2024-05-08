@@ -139,5 +139,5 @@ resource "aws_network_acl" "ibm-data-nacl" {
 #Private NACL Association
 resource "aws_network_acl_association" "ibm-data-nacl-association" {
   network_acl_id = aws_network_acl.ibm-data-nacl.id
-  subnet_id      = aws_subnet.data-web-sn.id
+  subnet_id      = aws_subnet.ibm-data-sn.id
 }
