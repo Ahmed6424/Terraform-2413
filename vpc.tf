@@ -163,7 +163,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_web-ssh" {
 }
 
 #HTTP Traffic
-resource "aws_vpc_security_group_ingress_rule" "allow_web-ssh" {
+resource "aws_vpc_security_group_ingress_rule" "allow_http-ssh" {
   security_group_id = aws_security_group.aibm-web-sg.id
   cidr_ipv4         = "0,0.0.0/0"
   from_port         = 80
