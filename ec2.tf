@@ -1,4 +1,4 @@
-# EC2 public sector
+# EC2 public server
 resource "aws_instance" "ibm-web-server" {
   ami           = "ami-0e001c9271cf7f3b9" # Ubuntu AMI & Amazon AMI ami-04ff98ccbfa41c9ad
   instance_type = "t2.micro"
