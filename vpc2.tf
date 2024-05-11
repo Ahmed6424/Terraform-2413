@@ -153,8 +153,8 @@ resource "aws_security_group" "ecomm-web-sg" {
   }
 }
 
-# SSH Traffic inboud
-resource "aws_vpc_security_group_ingress_rule" "allow-web-ssh" {
+# SSH Traffic
+resource "aws_vpc_security_group_ingress_rule" "ecomm-web-ssh" {
   security_group_id = aws_security_group.ecomm-web-sg.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 22
@@ -163,8 +163,8 @@ resource "aws_vpc_security_group_ingress_rule" "allow-web-ssh" {
 }
 
 
-# HTTP Traffic inbound
-resource "aws_vpc_security_group_ingress_rule" "allow-http-ssh" {
+# HTTP Traffic 
+resource "aws_vpc_security_group_ingress_rule" "ecomm-http-ssh" {
   security_group_id = aws_security_group.ecomm-web-sg.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 80
