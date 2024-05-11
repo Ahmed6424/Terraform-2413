@@ -103,7 +103,7 @@ resource "aws_network_acl" "ecomm-web-nacl" {
   }
 }
 
-#Public NACL Association
+# Public NACL Association
 resource "aws_network_acl_association" "ecomm-web-nacl-association" {
   network_acl_id = aws_network_acl.ecomm-web-nacl.id
   subnet_id      = aws_subnet.ecomm-web-sn.id
@@ -136,13 +136,13 @@ resource "aws_network_acl" "ecomm-data-nacl" {
   }
 }
 
-#Private NACL Association
+# Private NACL Association
 resource "aws_network_acl_association" "ecomm-data-nacl-association" {
   network_acl_id = aws_network_acl.ecomm-data-nacl.id
   subnet_id      = aws_subnet.ecomm-data-sn.id
 }
 
-#Public Security group
+# Public Security group
 resource "aws_security_group" "ecomm-web-sg" {
   name        = "ecomm-web-server-sg"
   description = "Allows web server traffic"
@@ -154,7 +154,7 @@ resource "aws_security_group" "ecomm-web-sg" {
 }
 
 # SSH Traffic inboud
-resource "aws_vpc_security_group_ingress_rule" "allow_web-ssh" {
+resource "aws_vpc_security_group_ingress_rule" "allow-web-ssh" {
   security_group_id = aws_security_group.ecomm-web-sg.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 22
@@ -163,8 +163,8 @@ resource "aws_vpc_security_group_ingress_rule" "allow_web-ssh" {
 }
 
 
-#HTTP Traffic inbound
-resource "aws_vpc_security_group_ingress_rule" "allow_http-ssh" {
+# HTTP Traffic inbound
+resource "aws_vpc_security_group_ingress_rule" "allow-http-ssh" {
   security_group_id = aws_security_group.ecomm-web-sg.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 80
@@ -172,8 +172,8 @@ resource "aws_vpc_security_group_ingress_rule" "allow_http-ssh" {
   to_port           = 80
 }
 
-#Allow Traffic outbound
-resource "aws_vpc_security_group_egress_rule" "ecomm outbound" {
+# Outbound Traffic allow
+resource "aws_vpc_security_group_egress_rule" "ecomm-outbound" {
   security_group_id = aws_security_group.ecomm-web-sg.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 0
