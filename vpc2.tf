@@ -153,7 +153,7 @@ resource "aws_security_group" "ecomm-web-sg" {
   }
 }
 
-# SSH Traffic
+# SSH Traffic inboud
 resource "aws_vpc_security_group_ingress_rule" "allow_web-ssh" {
   security_group_id = aws_security_group.ecomm-web-sg.id
   cidr_ipv4         = "0.0.0.0/0"
@@ -163,7 +163,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_web-ssh" {
 }
 
 
-#HTTP Traffic
+#HTTP Traffic inbound
 resource "aws_vpc_security_group_ingress_rule" "allow_http-ssh" {
   security_group_id = aws_security_group.ecomm-web-sg.id
   cidr_ipv4         = "0.0.0.0/0"
@@ -171,3 +171,13 @@ resource "aws_vpc_security_group_ingress_rule" "allow_http-ssh" {
   ip_protocol       = "tcp"
   to_port           = 80
 }
+
+#Allow Traffic outbound
+resource "aws_vpc_security_group_egress_rule" "ecomm outbound" {
+  security_group_id = aws_security_group.ecomm-web-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 0
+  ip_protocol       = "tcp"
+  to_port           = 65535
+}
+
